@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Recognition</title>
+    <link rel="stylesheet" href="style/css.css">
+</head>
+<body>
+    <h1>Nhận diện ngôn ngữ ký hiệu</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <br><br>
+    <img id="preview" style="max-width: 200px; display: none;">
+    <p id="result">Kết quả: Chưa có dự đoán</p>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.21.0/dist/tf.min.js"></script>
+    <script src="style/script.js"></script>
+</body>
+</html>
