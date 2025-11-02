@@ -28,12 +28,14 @@ def predict_image(image_path):
     img = preprocess_image(image_path)
     prediction = model.predict(img)
     predicted_label = np.argmax(prediction)
-    return chr(65 + predicted_label)  # Chuyển số thành chữ cái (A-Y)
+    labels = [chr(65 + i) for i in range(25) if i != 9 and i != 25] # A-Y, bỏ J, Z 
+    print("Xác suất từng lớp:", dict(zip(labels, prediction[0])))
+    return chr(65 + predicted_label) # Chuyển số thành chữ cái (A-Y)
 
 # Thử nghiệm với ảnh thực tế
 if __name__ == "__main__":
     # Đường dẫn tới ảnh thực tế (thay bằng ảnh của bạn)
-    image_path = "data/real_data/sample_hand.jpg"
+    image_path = "data/real_data/handC.jpg"
     try:
         predicted_letter = predict_image(image_path)
         print(f"Dự đoán: {predicted_letter}")

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kết quả nhận diện</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="logo"></div>
+        <div class="title">Kết quả nhận diện</div>
+      </div>
+
+      <p>Chữ dự đoán: <span class="pill">{{ letter }}</span></p>
+      <p>Độ tin cậy: <strong>{{ '%.2f'|format(prob*100) }}%</strong></p>
+
+      <h3 class="mt-20">Top-5</h3>
+      <ol class="list">
+        {% for l, p in top5 %}
+          <li>{{ l }} – {{ '%.2f'|format(p*100) }}%</li>
+        {% endfor %}
+      </ol>
+
+      <div class="mt-20">
+        <a class="btn secondary" href="{{ url_for('index') }}">← Nhận diện ảnh khác</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

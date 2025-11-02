@@ -1,0 +1,5 @@
+markdown-it-py==3.0.0
+rich==13.7.1
+flax==0.8.5
+jax==0.4.28
+jaxlib==0.4.28

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ASL Recognition</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="logo"></div>
+        <div>
+          <div class="title">🤟 Nhận diện ký hiệu tay</div>
+          <div class="subtle">Upload ảnh bàn tay</div>
+        </div>
+      </div>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="card" style="margin:12px 0; border-style:dashed;">
+            {% for m in messages %}
+              <div>{{ m }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form id="form" method="post" enctype="multipart/form-data" class="mt-12">
+        <div id="drop" class="drop">
+          <div class="drop-inner">
+            <div class="badge">Kéo & thả ảnh vào đây</div>
+            <div class="preview-wrap">
+              <div class="preview">
+                <img id="preview-img" alt="Preview" />
+              </div>
+              <div>
+                <div class="subtle">Chỉ hỗ trợ PNG/JPG. Ảnh sẽ được resize về 28×28, grayscale & chuẩn hoá.</div>
+                <div id="meta" class="meta mt-12">Chưa có ảnh nào được chọn.</div>
+                <div class="drop-actions mt-12">
+                  <input id="image" name="image" type="file" accept="image/*" />
+                  <button type="button" id="select-btn" class="secondary">Chọn ảnh…</button>
+                  <button type="submit" id="submit-btn" disabled>Nhận diện</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <hr class="sep" />
+      <div class="subtle center">Mẹo: chụp tay rõ, chiếm phần lớn khung hình, nền càng đơn giản càng tốt.</div>
+    </div>
+  </div>
+
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
